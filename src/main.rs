@@ -3,9 +3,12 @@
 
 // This is Rocket! I don't know what "macro_use" means, but it's how you import it so... cool.
 #[macro_use] extern crate rocket;
-extern crate postgres;
 
-use postgres::{ connection, TlsMode }
+
+
+// extern crate postgres;
+
+// use postgres::{ connection, TlsMode };
 
 mod movie_routes;
 

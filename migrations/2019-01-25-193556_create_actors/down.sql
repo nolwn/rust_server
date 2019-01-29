@@ -1,1 +1,1 @@
-DROP TABLE actors;
+DROP TABLE IF EXISTS actors;

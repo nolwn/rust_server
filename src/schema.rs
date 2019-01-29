@@ -5,8 +5,8 @@ table! {
         biography -> Text,
         profile_url -> Nullable<Varchar>,
         birth_date -> Timestamp,
-        created_at -> Timestamptz,
-        updated_at -> Timestamptz,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
@@ -26,9 +26,9 @@ table! {
         description -> Text,
         release_date -> Timestamp,
         rating -> Varchar,
-        poster_url -> Varchar,
-        created_at -> Timestamptz,
-        updated_at -> Timestamptz,
+        poster_url -> Nullable<Varchar>,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 

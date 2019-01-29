@@ -1,1 +1,1 @@
-DROP TABLE actors_movies;
+DROP TABLE IF EXISTS actors_movies;

@@ -8,7 +8,7 @@ use super::schema::actors;
 use serde_derive::*;
 use chrono::prelude::*;
 
-#[derive(Queryable, Debug)] // Tells Diesel that this is returned from SELECT
+#[derive(Queryable, Serialize, Deserialize, Debug)] // Tells Diesel that this is returned from SELECT
 pub struct Movie {
     pub id: i32,
     pub name: String,

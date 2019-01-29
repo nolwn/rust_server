@@ -14,9 +14,10 @@ use rust_server::establish_connection;
 pub fn movies() -> String {
     let connection = establish_connection();
 
-    let movies = movies::table.load::<Movie>(&connection);
-    // serde_json::to_string(&movies).unwrap()
-    "".to_string()
+    let movies = movies::table.load::<Movie>(&connection).ok();
+    serde_json::to_string(&movies).unwrap()
+    // format!("{:?}", movies)
+    // "".to_string()
 }
 
 #[get("/movies/<id>")] // <id> is a parameter, in this case representing an id

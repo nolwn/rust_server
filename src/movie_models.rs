@@ -20,16 +20,16 @@ pub struct Movie {
     pub updated_at: NaiveDateTime
 }
 
-#[derive(Insertable)] // Tells Diesel that this is added with INSERT
+#[derive(Insertable, Serialize, Deserialize, Debug)] // Tells Diesel that this is added with INSERT
 #[table_name = "movies"]
 pub struct NewMovie { // CamelCase for a new Type...
     pub name: String,
     pub description: String,
     pub release_date: NaiveDateTime,
     pub rating: String,
-    // pub poster_url: Option<String>,
-    // pub created_at: NaiveDateTime,
-    // pub updated_at: NaiveDateTime
+    pub poster_url: Option<String>,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime
 }
 
 #[derive(Insertable)]

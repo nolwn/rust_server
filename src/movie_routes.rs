@@ -1,9 +1,10 @@
 use diesel;
 use diesel::prelude::*;
+use rust_server::*;
 use rust_server::schema::movies;
-use rust_server::models::Movie;
+use rust_server::movie_models::Movie;
 use rust_server::establish_connection;
-// use self::schema::movies::dls::*;
+use rust_server::schema::movies::dsl::*;
 
 /*
  *  Below are the routes!
@@ -20,7 +21,10 @@ pub fn movies() -> String {
     // "".to_string()
 }
 
-#[get("/movies/<id>")] // <id> is a parameter, in this case representing an id
-pub fn movie(id: String) -> String {
-    format!("You are looking for a movie with and id of {}", id)
+#[get("/movies/<m_id>")] // <id> is a parameter, in this case representing an id
+pub fn movie(m_id: i32) -> String {
+    let connection = establish_connection();
+
+    let movie = movies::table.find(m_id).first::<Movie>(&connection).ok().unwrap();
+    serde_json::to_string(&movie).unwrap()
 }

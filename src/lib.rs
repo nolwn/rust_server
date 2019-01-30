@@ -9,7 +9,7 @@ use dotenv::dotenv; // load env variables from the .env file
 use std::env; // access to the environment variables
 
 pub mod schema; // a bunch of macros that Diesel generates for me.
-pub mod models; // structs that describe the shape of my queries and their responses
+pub mod movie_models; // structs that describe the shape of my queries and their responses
 
 // a function with no parameters that returns a PgConnection, a connection to Postgresql
 pub fn establish_connection() -> PgConnection {

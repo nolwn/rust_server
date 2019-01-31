@@ -37,8 +37,17 @@ pub fn movie(m_id: i32) -> String {
 }
 
 #[post("/movies", data="<body>")]
-pub fn create_movie(body: Json<Movie>) -> String {
+pub fn create_movie(body: Json<NewMovie>) -> String {
+    use rust_server::schema::movies::dsl::*;
+    
     let connection = establish_connection();
 
-    "".to_string()
+    let new_movie = body.into_inner();
+
+    diesel::insert_into(movies)
+        .values(&new_movie)
+        .execute(&connection)
+        .expect("Could not insert");
+
+    format!("Added the thing")
 }

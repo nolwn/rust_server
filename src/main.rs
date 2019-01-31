@@ -1,10 +1,10 @@
 // These are features required by Rocket that are contained in the "Nightly" build
-#![feature(proc_macro_hygiene, decl_macro)]
+#![feature(proc_macro_hygiene, decl_macro, plugin)]
+// #![plugin(rocket_codegen)]
 
 // This is Rocket! I don't know what "macro_use" means, but it's how you import it so... cool.
-#[macro_use] extern crate rocket;
-
-
+#[macro_use]
+extern crate rocket;
 
 // extern crate postgres;
 

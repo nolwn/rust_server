@@ -16,11 +16,9 @@ pub struct Movie {
     pub id: i32,
     pub name: String,
     pub description: String,
-    pub release_date: NaiveDateTime,
+    pub release_date: i32,
     pub rating: String,
-    pub poster_url: Option<String>,
-    pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime
+    pub poster_url: Option<String>
 }
 
 #[derive(Insertable, Serialize, Deserialize, Debug)] // Tells Diesel that this is added with INSERT
@@ -28,22 +26,18 @@ pub struct Movie {
 pub struct NewMovie { // CamelCase for a new Type...
     pub name: String,
     pub description: String,
-    pub release_date: NaiveDateTime,
+    pub release_date: i32,
     pub rating: String,
-    pub poster_url: Option<String>,
-    pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime
+    pub poster_url: Option<String>
 }
 
 #[derive(FromForm)] // Tells Diesel that this is added with INSERT
 pub struct FormMovie { // CamelCase for a new Type...
     pub name: String,
     pub description: String,
-    pub release_date: DateWrap,
+    pub release_date: i32,
     pub rating: String,
-    pub poster_url: Option<String>,
-    pub created_at: DateWrap,
-    pub updated_at: DateWrap
+    pub poster_url: Option<String>
 }
 
 #[derive(Insertable)]
@@ -53,15 +47,4 @@ pub struct Actor {
     pub name: String,
     pub biography: String
 
-}
-
-impl<'v> FromFormValue<'v> for DateWrap {
-    type Error = String;
-
-    fn from_form_value(form_value: &RawStr) -> Result<DateWrap, String> {
-        match serde_json::from_str(&form_value).unwrap() {
-            date => Ok(DateWrap(date)),
-            _ => Err(form_value.url_decode().ok().unwrap()),
-        }
-    }
 }

@@ -4,9 +4,6 @@ table! {
         name -> Varchar,
         biography -> Text,
         profile_url -> Nullable<Varchar>,
-        birth_date -> Timestamp,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
     }
 }
 
@@ -24,11 +21,9 @@ table! {
         id -> Int4,
         name -> Varchar,
         description -> Text,
-        release_date -> Timestamp,
+        release_date -> Int4,
         rating -> Varchar,
         poster_url -> Nullable<Varchar>,
-        created_at -> Timestamp,
-        updated_at -> Timestamp,
     }
 }
 

@@ -21,7 +21,7 @@ pub struct Movie {
     pub poster_url: Option<String>
 }
 
-#[derive(Insertable, Serialize, Deserialize, Debug)] // Tells Diesel that this is added with INSERT
+#[derive(Insertable, Serialize, Deserialize, Debug, FromForm)] // Tells Diesel that this is added with INSERT
 #[table_name = "movies"]
 pub struct NewMovie { // CamelCase for a new Type...
     pub name: String,
@@ -31,14 +31,14 @@ pub struct NewMovie { // CamelCase for a new Type...
     pub poster_url: Option<String>
 }
 
-#[derive(FromForm)] // Tells Diesel that this is added with INSERT
-pub struct FormMovie { // CamelCase for a new Type...
-    pub name: String,
-    pub description: String,
-    pub release_date: i32,
-    pub rating: String,
-    pub poster_url: Option<String>
-}
+// #[derive(FromForm)] // Tells Diesel that this is added with INSERT
+// pub struct FormMovie { // CamelCase for a new Type...
+//     pub name: String,
+//     pub description: String,
+//     pub release_date: i32,
+//     pub rating: String,
+//     pub poster_url: Option<String>
+// }
 
 #[derive(Insertable)]
 #[table_name = "actors"]

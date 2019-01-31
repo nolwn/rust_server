@@ -5,6 +5,7 @@ use rust_server::schema::movies;
 use rust_server::movie_models::*;
 use rust_server::establish_connection;
 use rust_server::schema::movies::dsl::*;
+use rocket_contrib::json::Json;
 
 /*
  *  Below are the routes!
@@ -35,8 +36,9 @@ pub fn movie(m_id: i32) -> String {
         .unwrap()
 }
 
-// #[post("/movies", data="<body>")]
-// pub fn create_movie(body: FormMovie) -> String {
-//     let connection = establish_connection();
-//
-// }
+#[post("/movies", data="<body>")]
+pub fn create_movie(body: Json<Movie>) -> String {
+    let connection = establish_connection();
+
+    "".to_string()
+}

@@ -34,12 +34,13 @@ pub fn movie(m_id: i32) -> String {
 
     serde_json::to_string(&movie)
         .unwrap()
+        .expect("NO!".to_string())
 }
 
 #[post("/movies", data="<body>")]
 pub fn create_movie(body: Json<NewMovie>) -> String {
     use rust_server::schema::movies::dsl::*;
-    
+
     let connection = establish_connection();
 
     let new_movie = body.into_inner();
